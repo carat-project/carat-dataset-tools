@@ -8,7 +8,7 @@ See also: http://carat.cs.helsinki.fi/
 1. Install maven3.
 2. `cd carat-dataset-tools; mvn clean compile assembly:single`
 
-## Run instructions 
+## Run instructions
 
 ```
 $SPARK_HOME/bin/spark-submit --class fi.helsinki.cs.nodes.carat.examples.SamplesFromJsonGz \
@@ -18,3 +18,8 @@ carat-dataset-tools-with-dependencies.jar --input /path/to/caratdata --output du
 ## Learn more
 
 [See the example class](src/main/scala/fi/helsinki/cs/nodes/carat/examples/SamplesFromJsonGz.scala).
+
+## Development
+
+In the Carat project, we use Scala IDE: http://scala-ide.org/
+
