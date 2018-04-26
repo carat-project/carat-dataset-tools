@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>carat-dataset-tools</artifactId>
+  <groupId>fi.helsinki.cs.nodes.carat</groupId>
+  <version>1.0.0</version>
+  <name>${project.artifactId}</name>
+  <description>Carat Collaborative Energy Diagnosis Dataset Tools</description>
+  <packaging>jar</packaging>
+  <inceptionYear>2018</inceptionYear>
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>http://github.com/carat-project/carat-dataset-tools</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+      <encoding>UTF-8</encoding>
+    <!-- Current version in use in Spark is .8, latest in 2.11 branch is .8 -->
+    <scala.version>2.11.8</scala.version>
+    <scala.major>2.11</scala.major>
+        <!-- Makes Scala Maven Plugin accept all Scala minor deps with same major version without warning -->
+    <!--<scala.compat.version>${scala.major}</scala.compat.version>-->
+    <spark.version>2.3.0</spark.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>fi.helsinki.cs.nodes</groupId>
+      <artifactId>getopt-scala</artifactId>
+      <version>1.1.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-sql_${scala.major}</artifactId>
+        <version>${spark.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${scala.major}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.scala-logging/scala-logging_2.11 -->
+    <dependency>
+      <groupId>com.typesafe.scala-logging</groupId>
+      <artifactId>scala-logging_${scala.major}</artifactId>
+      <version>3.4.0</version>
+    </dependency>
+
+    <!-- Test -->
+     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.9</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_${scala.major}</artifactId>
+      <version>2.2.6</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <jvmArgs>
+            <jvmArg>-Xms64m</jvmArg>
+            <jvmArg>-Xmx1024m</jvmArg>
+          </jvmArgs>
+          <recompileMode>incremental</recompileMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>fully.qualified.MainClass</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+            <phase>package</phase> <!-- bind to the packaging phase -->
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,16 @@
+*~
+target
+.cache
+# This is created by Scala-IDE.
+.cache-main
+.classpath
+.project
+.settings
+# Intellij Idea project files
+.idea
+*.iml
+# the deployment branch will be different for each person. Changing the deployment branch name should not be commited to the remote repositiory
+# Python stuff
+.coverage
+.pydevproject
+*.pyc
