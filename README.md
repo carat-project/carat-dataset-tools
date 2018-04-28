@@ -6,7 +6,7 @@ See also: http://carat.cs.helsinki.fi/
 ## Build instructions
 
 1. Install maven3.
-2. `cd carat-dataset-tools; mvn clean package assembly:single`
+2. `cd carat-dataset-tools; mvn clean package
 3. The above produces the file `target/carat-dataset-tools-1.0.0-jar-with-dependencies.jar`. You are now ready to run the example class of the project.
 
 ## Run instructions
